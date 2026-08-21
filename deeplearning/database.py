@@ -27,7 +27,10 @@ a
 b
 a+b
 # 内存
-a=4
-before=id(Y)
 Y=3
-print(id(Y))
+before=id(Y)
+before
+Y=5
+id(Y)
+Y==before
+Y
