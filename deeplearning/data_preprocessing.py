@@ -25,14 +25,22 @@ print(inputs)
 # 把数据类型转换为张量
 x = torch.tensor(inputs.values.astype("float32"))
 y = torch.tensor(outputs.values.astype("float32"))
-# 向量间的点乘
+# 向量间的点乘 vec1 @ vec2
 vec1=torch.ones(4,dtype=torch.float32)
 vec2=torch.tensor([1.0,2.,3.,4.])
 print(torch.dot(vec1,vec2))
-# 矩阵和向量间的点乘
+# 矩阵和向量间的点乘 mat1 @ vec3
 vec3=torch.arange(4)
 mat1=torch.arange(12).reshape(3,4)
 torch.mv(mat1,vec3)
-# 矩阵相乘
+# 矩阵相乘 mat1 @ mat2
 mat2=torch.arange(12).reshape(4,3)
 torch.mm(mat1,mat2)
+# L2范数是向量元素平方和的平方根
+vec4=torch.tensor([3.0,-4.0])
+torch.norm(vec4)
+# L1范数是向量元素的绝对值之和 torch.abs()求各元素的绝对值，.sum()方法对向量所有元素求和
+torch.abs(vec4).sum()
+# 矩阵的F范数是矩阵元素的平方和的平方根
+mat1=mat1.to(torch.float32)
+torch.norm(mat1)
