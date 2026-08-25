@@ -11,3 +11,10 @@ x.grad.zero_()
 y=x.sum()
 y.backward()
 x.gard
+# 将某些计算移动到梯度记录之外
+x.gard.zero_()
+y=x*x
+u=y.detach()       # detach()方法表示梯度截断，不再继续回传--把y当成一个常数而不是一个关于x的函数
+z=u*x              # u也被当做一个常数使用而不是关于x的函数
+z.sum().backward()
+x.grad ==u
